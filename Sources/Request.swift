@@ -129,7 +129,7 @@ public struct Request {
 
     // CoW:
 
-    private var _ref: Container
+    fileprivate var _ref: Container
 
     private mutating func _mutate(_ closure: (Container) -> Void) {
         if !isKnownUniquelyReferenced(&_ref) {
@@ -232,7 +232,7 @@ public extension Request {
 }
 
 public extension Request {
-    private struct CacheKey: Hashable {
+    fileprivate struct CacheKey: Hashable {
         let request: Request
 
         var hashValue: Int { return request._ref._urlString?.hashValue ?? 0 }
@@ -244,7 +244,7 @@ public extension Request {
         }
     }
 
-    private struct LoadKey: Hashable {
+    fileprivate struct LoadKey: Hashable {
         let request: Request
 
         var hashValue: Int { return request._ref._urlString?.hashValue ?? 0 }
